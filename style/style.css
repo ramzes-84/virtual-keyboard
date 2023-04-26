@@ -1,0 +1,143 @@
+/* Обнуление стилей */
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+ul,
+ol,
+li {
+  list-style: none;
+}
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+input,
+button,
+textarea,
+select {
+  font-family:inherit;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding:0;border:0;
+}
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+/* Основной CSS */
+
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.body,
+.header,
+.keyboard,
+.input-area {
+  margin: 0 auto;
+  max-width: 750px;
+}
+.h1 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.input-area {
+  padding: 37px 37px 125px 36px;
+  width: 378px;
+  height: 391px;
+  background-image: url(/assets/img/monitor.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.input-area__text {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  color: white;
+  border: 0.5px solid black;
+  background-color: transparent;
+  border-radius: 6px;
+  resize: none;
+  caret-color: white;
+  font-family: 'Press Start 2P', cursive;
+  line-height: 20px;
+  letter-spacing: 2px;
+}
+.input-area__text:focus-visible {
+  border: 0.5px solid black;
+}
+.keyboard {
+  padding: 5px;
+  border: 2px solid grey;
+  border-radius: 6px;
+  background-color: #e9cca4;
+}
+.keyboard__row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.keyboard__btn {
+  width: 40px;
+  height: 40px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  background: #b45c21;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-radius 0.3s, background-color 0.3s;
+}
+.keyboard__btn_wide {
+  flex-grow: 1;
+}
+.keyboard__btn_wider {
+  flex-grow: 2;
+}
+.keyboard__btn_widest {
+  flex-grow: 20;
+}
+.keyboard__made {
+  font-size: 8px;
+  text-align: right;
+}
