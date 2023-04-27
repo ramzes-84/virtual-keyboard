@@ -21,7 +21,7 @@ export function createPageStructure() {
   main.append(kbContainer);
 }
 
-export function createKB(arr) {
+export function createKB(arr, language) {
   const kbContainer = document.querySelector('.keyboard');
   let keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
@@ -77,4 +77,12 @@ export function createKB(arr) {
   manufacturer.textContent = 'Made in China';
   manufacturer.className = 'keyboard__made';
   kbContainer.append(manufacturer);
+}
+
+export function setLangOnStart() {
+  if (localStorage.getItem('lang')) {
+    return localStorage.getItem('lang');
+  }
+  localStorage.setItem('lang', 'eng');
+  return 'eng';
 }

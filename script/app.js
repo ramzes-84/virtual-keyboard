@@ -1,12 +1,14 @@
 import keyBase from './keyboard-base.js';
-import { createPageStructure, createKB } from './create-kb.js';
+import { createPageStructure, createKB, setLangOnStart } from './create-kb.js';
+
+let isCapsLkOn = false;
+let lang = setLangOnStart();
 
 createPageStructure();
-createKB(keyBase);
+createKB(keyBase, lang);
 
 const keyboard = document.querySelector('.keyboard');
 const monitor = document.querySelector('.input-area__text');
-let isCapsLkOn = false;
 
 
 function typeText() {
