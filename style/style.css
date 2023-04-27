@@ -76,9 +76,11 @@ h6 {
   max-width: 750px;
 }
 .h1 {
+  margin: 15px;
   text-align: center;
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: 'Press Start 2P', cursive;
 }
 .input-area {
   padding: 37px 37px 125px 36px;
@@ -127,6 +129,11 @@ h6 {
   border-radius: 6px;
   cursor: pointer;
   transition: font-size 0.1s, border-radius 0.1s, background-color 0.3s;
+}
+@media (hover: hover) {
+  .keyboard__btn:hover {
+    background: #b45c21c0;
+  }
 }
 .keyboard__btn_wide {
   flex-grow: 1;

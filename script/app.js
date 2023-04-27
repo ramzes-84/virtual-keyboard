@@ -2,7 +2,7 @@ import keyBase from './keyboard-base.js';
 import { createPageStructure, createKB, setLangOnStart } from './create-kb.js';
 
 let isCapsLkOn = false;
-let lang = setLangOnStart();
+const lang = setLangOnStart();
 
 createPageStructure();
 createKB(keyBase, lang);
@@ -88,6 +88,12 @@ function deAnimateKey() {
   }
 }
 
+function someFunc() {
+  event.preventDefault()
+  console.log(event.key, event.code);
+}
+
 keyboard.addEventListener('click', typeText);
 keyboard.addEventListener('mousedown', animateKey);
 keyboard.addEventListener('mouseup', deAnimateKey);
+// document.addEventListener('keydown', someFunc);

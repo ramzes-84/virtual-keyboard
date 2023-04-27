@@ -15,7 +15,7 @@ export function createPageStructure() {
   const inputField = document.createElement('textarea');
   inputField.className = 'input-area__text';
   inputField.autofocus = true;
-  inputField.placeholder = 'Hello, world!';
+  inputField.placeholder = 'Hello, world!\nLet\'s hack Pentagon...';
   inputArea.append(inputField);
   main.append(inputArea);
   const kbContainer = document.createElement('section');
