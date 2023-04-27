@@ -14,6 +14,7 @@ export function createPageStructure() {
   inputArea.className = 'input-area';
   const inputField = document.createElement('textarea');
   inputField.className = 'input-area__text';
+  inputField.autofocus = true;
   inputArea.append(inputField);
   main.append(inputArea);
   const kbContainer = document.createElement('section');

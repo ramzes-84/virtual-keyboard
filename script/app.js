@@ -56,6 +56,9 @@ function typeText() {
         break;
     }
   }
+  const endOfText = monitor.textContent.length;
+  monitor.setSelectionRange(endOfText, endOfText);
+  monitor.focus();
 }
 
 function animateKey() {
