@@ -25,53 +25,53 @@ export function createKB(arr) {
   const kbContainer = document.querySelector('.keyboard');
   let keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < 14; i += 1) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i]['eng'];
-    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i]['additionClass']);
+    btn.textContent = arr[i].eng;
+    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
-    kbContainer.append(keysRow)
+    kbContainer.append(keysRow);
   }
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
-  for (let i = 14; i < 29; i++) {
+  for (let i = 14; i < 29; i += 1) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i]['eng'];
-    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i]['additionClass']);
+    btn.textContent = arr[i].eng;
+    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
-    kbContainer.append(keysRow)
+    kbContainer.append(keysRow);
   }
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
-  for (let i = 29; i < 42; i++) {
+  for (let i = 29; i < 42; i += 1) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i]['eng'];
-    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i]['additionClass']);
+    btn.textContent = arr[i].eng;
+    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
-    kbContainer.append(keysRow)
+    kbContainer.append(keysRow);
   }
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
-  for (let i = 42; i < 55; i++) {
+  for (let i = 42; i < 55; i += 1) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i]['eng'];
-    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i]['additionClass']);
+    btn.textContent = arr[i].eng;
+    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
-    kbContainer.append(keysRow)
+    kbContainer.append(keysRow);
   }
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
-  for (let i = 55; i < arr.length; i++) {
+  for (let i = 55; i < arr.length; i += 1) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i]['eng'];
-    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i]['additionClass']);
+    btn.textContent = arr[i].eng;
+    if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
-    kbContainer.append(keysRow)
+    kbContainer.append(keysRow);
   }
   const manufacturer = document.createElement('p');
   manufacturer.textContent = 'Made in China';
