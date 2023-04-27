@@ -10,6 +10,19 @@ createKB(keyBase, lang);
 const keyboard = document.querySelector('.keyboard');
 const monitor = document.querySelector('.input-area__text');
 
+function changeCharsCase() {
+  const keys = document.querySelectorAll('.keyboard__btn_char');
+  if (!isCapsLkOn) {
+    keys.forEach((item) => {
+      item.textContent = item.textContent.toUpperCase();
+    });
+  } else {
+    keys.forEach((item) => {
+      item.textContent = item.textContent.toLowerCase();
+    });
+  }
+  isCapsLkOn = !(isCapsLkOn);
+}
 
 function typeText() {
   if (event.target.tagName === 'BUTTON') {
@@ -45,18 +58,33 @@ function typeText() {
   }
 }
 
-keyboard.addEventListener('click', typeText);
-
-function changeCharsCase() {
-  const keys = document.querySelectorAll('.keyboard__btn_char');
-  if (!isCapsLkOn) {
-    keys.forEach((item) => {
-      item.textContent = item.textContent.toUpperCase();
-    });
-  } else {
-    keys.forEach((item) => {
-      item.textContent = item.textContent.toLowerCase();
-    });
+function animateKey() {
+  if (event.target.tagName === 'BUTTON') {
+    const btn = event.target;
+    switch (btn.textContent) {
+      case 'CapsLk':
+        btn.classList.toggle('keyboard__btn_active');
+        break;
+      default:
+        btn.classList.add('keyboard__btn_active');
+        break;
+    }
   }
-  isCapsLkOn = !(isCapsLkOn);
 }
+
+function deAnimateKey() {
+  if (event.target.tagName === 'BUTTON') {
+    const btn = event.target;
+    switch (btn.textContent) {
+      case 'CapsLk':
+        break;
+      default:
+        btn.classList.remove('keyboard__btn_active');
+        break;
+    }
+  }
+}
+
+keyboard.addEventListener('click', typeText);
+keyboard.addEventListener('mousedown', animateKey);
+keyboard.addEventListener('mouseup', deAnimateKey);

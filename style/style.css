@@ -126,7 +126,7 @@ h6 {
   background: #b45c21;
   border-radius: 6px;
   cursor: pointer;
-  transition: border-radius 0.3s, background-color 0.3s;
+  transition: font-size 0.1s, border-radius 0.1s, background-color 0.3s;
 }
 .keyboard__btn_wide {
   flex-grow: 1;
@@ -136,6 +136,11 @@ h6 {
 }
 .keyboard__btn_widest {
   flex-grow: 20;
+}
+.keyboard__btn_active {
+  font-size: 20px;
+  background: #663413;
+  border-radius: 20px;
 }
 .keyboard__made {
   font-size: 8px;
