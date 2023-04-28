@@ -31,6 +31,7 @@ export function createKB(arr, language) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
     btn.textContent = arr[i].eng;
+    btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
     kbContainer.append(keysRow);
@@ -41,6 +42,7 @@ export function createKB(arr, language) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
     btn.textContent = arr[i].eng;
+    btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
     kbContainer.append(keysRow);
@@ -51,6 +53,7 @@ export function createKB(arr, language) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
     btn.textContent = arr[i].eng;
+    btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
     kbContainer.append(keysRow);
@@ -61,6 +64,7 @@ export function createKB(arr, language) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
     btn.textContent = arr[i].eng;
+    btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
     kbContainer.append(keysRow);
@@ -71,6 +75,7 @@ export function createKB(arr, language) {
     let btn = document.createElement('button');
     btn.className = 'keyboard__btn';
     btn.textContent = arr[i].eng;
+    btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
     kbContainer.append(keysRow);

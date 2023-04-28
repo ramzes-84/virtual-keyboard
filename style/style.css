@@ -134,6 +134,10 @@ h6 {
   .keyboard__btn:hover {
     background: #b45c21c0;
   }
+  .keyboard__btn_active:hover {
+    background: #663413;
+  }
+  
 }
 .keyboard__btn_wide {
   flex-grow: 1;
