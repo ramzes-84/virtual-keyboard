@@ -23,14 +23,22 @@ export function createPageStructure() {
   main.append(kbContainer);
 }
 
+export function setLangOnStart() {
+  if (localStorage.getItem('lang')) {
+    return localStorage.getItem('lang');
+  }
+  localStorage.setItem('lang', 'eng');
+  return 'eng';
+}
+
 export function createKB(arr, language) {
   const kbContainer = document.querySelector('.keyboard');
   let keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
   for (let i = 0; i < 14; i += 1) {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i].eng;
+    btn.textContent = arr[i][language];
     btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
@@ -39,9 +47,9 @@ export function createKB(arr, language) {
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
   for (let i = 14; i < 29; i += 1) {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i].eng;
+    btn.textContent = arr[i][language];
     btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
@@ -50,9 +58,9 @@ export function createKB(arr, language) {
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
   for (let i = 29; i < 42; i += 1) {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i].eng;
+    btn.textContent = arr[i][language];
     btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
@@ -61,9 +69,9 @@ export function createKB(arr, language) {
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
   for (let i = 42; i < 55; i += 1) {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i].eng;
+    btn.textContent = arr[i][language];
     btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
@@ -72,9 +80,9 @@ export function createKB(arr, language) {
   keysRow = document.createElement('div');
   keysRow.className = 'keyboard__row';
   for (let i = 55; i < arr.length; i += 1) {
-    let btn = document.createElement('button');
+    const btn = document.createElement('button');
     btn.className = 'keyboard__btn';
-    btn.textContent = arr[i].eng;
+    btn.textContent = arr[i][language];
     btn.setAttribute('data-code', arr[i].code);
     if (Object.prototype.hasOwnProperty.call(arr[i], 'additionClass')) btn.classList.add(arr[i].additionClass);
     keysRow.append(btn);
@@ -84,12 +92,4 @@ export function createKB(arr, language) {
   manufacturer.textContent = 'Made in China';
   manufacturer.className = 'keyboard__made';
   kbContainer.append(manufacturer);
-}
-
-export function setLangOnStart() {
-  if (localStorage.getItem('lang')) {
-    return localStorage.getItem('lang');
-  }
-  localStorage.setItem('lang', 'eng');
-  return 'eng';
 }

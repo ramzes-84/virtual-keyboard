@@ -2,14 +2,26 @@ import keyBase from './keyboard-base.js';
 import { createPageStructure, createKB, setLangOnStart } from './create-kb.js';
 
 let isCapsLkOn = false;
-const lang = setLangOnStart();
+let lang = setLangOnStart();
 
 createPageStructure();
 createKB(keyBase, lang);
 
 const keyboard = document.querySelector('.keyboard');
 const monitor = document.querySelector('.input-area__text');
-// let caretPos;
+
+function changeLang() {
+  let newLang;
+  if (localStorage.getItem('lang') === 'eng') {
+    newLang = 'rus';
+  } else {
+    newLang = 'eng';
+  }
+  localStorage.setItem('lang', newLang);
+  lang = newLang;
+  keyboard.innerHTML = '';
+  createKB(keyBase, lang);
+}
 
 function changeCharsCase() {
   const keys = document.querySelectorAll('.keyboard__btn_char');
@@ -25,7 +37,35 @@ function changeCharsCase() {
   isCapsLkOn = !(isCapsLkOn);
 }
 
+function animateKey() {
+  if (event.target.tagName === 'BUTTON') {
+    const btn = event.target;
+    switch (btn.textContent) {
+      case 'CapsLk':
+        btn.classList.toggle('keyboard__btn_active');
+        break;
+      default:
+        btn.classList.add('keyboard__btn_active');
+        break;
+    }
+  }
+}
+
+function deAnimateKey() {
+  if (event.target.tagName === 'BUTTON') {
+    const btn = event.target;
+    switch (btn.textContent) {
+      case 'CapsLk':
+        break;
+      default:
+        btn.classList.remove('keyboard__btn_active');
+        break;
+    }
+  }
+}
+
 function typeTextMouse() {
+  // const caretPos = monitor.selectionStart;
   if (event.target.tagName === 'BUTTON') {
     if (event.type === 'mousedown') {
       animateKey();
@@ -74,7 +114,18 @@ function typeTextMouse() {
         case 'AltLeft':
           break;
         case 'AltRight':
-          break
+          break;
+        case 'ArrowLeft':
+          return;
+        case 'ArrowRight':
+          break;
+        case 'ArrowUp':
+          break;
+        case 'ArrowDown':
+          break;
+        case 'none':
+          changeLang();
+          break;
         default:
           monitor.textContent += event.target.textContent;
           break;
@@ -93,6 +144,15 @@ function typeTextMouse() {
         case 'ShiftRight':
           changeCharsCase();
           break;
+        case 'ArrowLeft': {
+          // monitor.selectionStart = caretPos - 1;
+          // monitor.focus();
+          // return;
+          // const endOfText = monitor.textContent.length;
+          // monitor.setSelectionRange(endOfText - 1, endOfText - 1);
+          // monitor.focus();
+          break;
+        }
         default:
           break;
       }
@@ -100,6 +160,7 @@ function typeTextMouse() {
   }
   const endOfText = monitor.textContent.length;
   monitor.setSelectionRange(endOfText, endOfText);
+  // monitor.selectionStart = caretPos + 1;
   monitor.focus();
 }
 
@@ -162,7 +223,9 @@ function typeTextKeyboard() {
       case 'AltLeft':
         break;
       case 'AltRight':
-        break
+        break;
+      case 'none':
+        break;
       default:
         monitor.textContent += pushedKey.textContent;
         break;
@@ -184,33 +247,6 @@ function typeTextKeyboard() {
   const endOfText = monitor.textContent.length;
   monitor.setSelectionRange(endOfText, endOfText);
   monitor.focus();
-}
-
-function animateKey() {
-  if (event.target.tagName === 'BUTTON') {
-    const btn = event.target;
-    switch (btn.textContent) {
-      case 'CapsLk':
-        btn.classList.toggle('keyboard__btn_active');
-        break;
-      default:
-        btn.classList.add('keyboard__btn_active');
-        break;
-    }
-  }
-}
-
-function deAnimateKey() {
-  if (event.target.tagName === 'BUTTON') {
-    const btn = event.target;
-    switch (btn.textContent) {
-      case 'CapsLk':
-        break;
-      default:
-        btn.classList.remove('keyboard__btn_active');
-        break;
-    }
-  }
 }
 
 keyboard.addEventListener('mousedown', typeTextMouse);

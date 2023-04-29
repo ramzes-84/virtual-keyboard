@@ -56,6 +56,7 @@ const keyBase = [
   {code: 'ShiftRight', eng: 'Shift', rus: 'Shift', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'ControlLeft', eng: 'Ctrl', rus: 'Ctrl', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'MetaLeft', eng: 'Win', rus: 'Win', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
+  {code: 'none', eng: 'Eng', rus: 'Рус', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'AltLeft', eng: 'Alt', rus: 'Alt', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'Space', eng: 'Space', rus: 'Space', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_widest'},
   {code: 'AltRight', eng: 'Alt', rus: 'Alt', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
