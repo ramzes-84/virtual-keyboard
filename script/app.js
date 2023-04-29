@@ -1,5 +1,5 @@
 import keyBase from './keyboard-base.js';
-import { createPageStructure, createKB, setLangOnStart } from './create-kb.js';
+import { createPageStructure, createKB, setLangOnStart, secondFuncOn, secondFuncOff } from './create-kb.js';
 
 let isCapsLkOn = false;
 let lang = setLangOnStart();
@@ -101,9 +101,11 @@ function typeTextMouse() {
           break;
         case 'ShiftLeft':
           changeCharsCase();
+          secondFuncOn(keyBase);
           break;
         case 'ShiftRight':
           changeCharsCase();
+          secondFuncOn(keyBase);
           break;
         case 'ControlLeft':
           break;
@@ -140,9 +142,11 @@ function typeTextMouse() {
           break;
         case 'ShiftLeft':
           changeCharsCase();
+          secondFuncOff(keyBase, lang);
           break;
         case 'ShiftRight':
           changeCharsCase();
+          secondFuncOff(keyBase, lang);
           break;
         case 'ArrowLeft': {
           // monitor.selectionStart = caretPos - 1;
@@ -210,9 +214,11 @@ function typeTextKeyboard() {
         break;
       case 'ShiftLeft':
         changeCharsCase();
+        secondFuncOn(keyBase);
         break;
       case 'ShiftRight':
         changeCharsCase();
+        secondFuncOn(keyBase);
         break;
       case 'ControlLeft':
         break;
@@ -235,9 +241,11 @@ function typeTextKeyboard() {
     switch (event.code) {
       case 'ShiftLeft':
         changeCharsCase();
+        secondFuncOff(keyBase, lang);
         break;
       case 'ShiftRight':
         changeCharsCase();
+        secondFuncOff(keyBase, lang);
         break;
       default:
         break;

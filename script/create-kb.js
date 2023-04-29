@@ -31,6 +31,20 @@ export function setLangOnStart() {
   return 'eng';
 }
 
+export function secondFuncOn(arr) {
+  const firstKeysRow = document.querySelector('.keyboard__row').children;
+  for (let i = 0; i < 14; i += 1) {
+    firstKeysRow[i].textContent = arr[i].secondFunc;
+  }
+}
+
+export function secondFuncOff(arr, language) {
+  const firstKeysRow = document.querySelector('.keyboard__row').children;
+  for (let i = 0; i < 14; i += 1) {
+    firstKeysRow[i].textContent = arr[i][language];
+  }
+}
+
 export function createKB(arr, language) {
   const kbContainer = document.querySelector('.keyboard');
   let keysRow = document.createElement('div');

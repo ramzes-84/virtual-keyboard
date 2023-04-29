@@ -12,7 +12,7 @@ const keyBase = [
   {code: 'Digit0', eng: '0', rus: '0', uniLang: true, secondFunc: ')', additionClass: 'keyboard__btn_digit'},
   {code: 'Minus', eng: '-', rus: '-', uniLang: true, secondFunc: '_', additionClass: 'keyboard__btn_digit'},
   {code: 'Equal', eng: '=', rus: '=', uniLang: true, secondFunc: '+', additionClass: 'keyboard__btn_digit'},
-  {code: 'Backspace', eng: 'Backspace', rus: 'Backspase', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
+  {code: 'Backspace', eng: 'Backspace', rus: 'Backspase', uniLang: true, secondFunc: 'Backspace', additionClass: 'keyboard__btn_wide'},
   {code: 'Tab', eng: 'Tab', rus: 'Tab', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'KeyQ', eng: 'q', rus: 'й', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char'},
   {code: 'KeyW', eng: 'w', rus: 'ц', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char'},
