@@ -1,5 +1,7 @@
 import keyBase from './keyboard-base.js';
-import { createPageStructure, createKB, setLangOnStart, secondFuncOn, secondFuncOff } from './create-kb.js';
+import {
+  createPageStructure, createKB, setLangOnStart, secondFuncOn, secondFuncOff,
+} from './create-kb.js';
 
 let isCapsLkOn = false;
 let lang = setLangOnStart();
@@ -212,10 +214,15 @@ function typeTextKeyboard() {
         break;
       case 'Delete':
         break;
-      case 'ShiftLeft':
+      case 'ShiftLeft': {
         changeCharsCase();
         secondFuncOn(keyBase);
+        const altKey = document.querySelector('[data-code="AltLeft"]');
+        if (altKey.classList.contains('keyboard__btn_active')) {
+          changeLang();
+        }
         break;
+      }
       case 'ShiftRight':
         changeCharsCase();
         secondFuncOn(keyBase);
@@ -226,8 +233,13 @@ function typeTextKeyboard() {
         break;
       case 'MetaLeft':
         break;
-      case 'AltLeft':
+      case 'AltLeft': {
+        const shiftKey = document.querySelector('[data-code="ShiftLeft"]');
+        if (shiftKey.classList.contains('keyboard__btn_active')) {
+          changeLang();
+        }
         break;
+      }
       case 'AltRight':
         break;
       case 'none':
