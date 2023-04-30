@@ -119,14 +119,6 @@ function typeTextMouse() {
           break;
         case 'AltRight':
           break;
-        case 'ArrowLeft':
-          return;
-        case 'ArrowRight':
-          break;
-        case 'ArrowUp':
-          break;
-        case 'ArrowDown':
-          break;
         case 'none':
           changeLang();
           break;
@@ -197,6 +189,7 @@ function unmarkPhysicallyPushedKey() {
 function typeTextKeyboard() {
   const pushedKey = keyboard.querySelector(`[data-code=${event.code}]`);
   if (event.type === 'keydown') {
+    markPhysicallyPushedKey();
     switch (event.code) {
       case 'Space':
         monitor.textContent += ' ';
@@ -223,10 +216,15 @@ function typeTextKeyboard() {
         }
         break;
       }
-      case 'ShiftRight':
+      case 'ShiftRight': {
         changeCharsCase();
         secondFuncOn(keyBase);
+        const altKey = document.querySelector('[data-code="AltRight"]');
+        if (altKey.classList.contains('keyboard__btn_active')) {
+          changeLang();
+        }
         break;
+      }
       case 'ControlLeft':
         break;
       case 'ControlRight':
@@ -240,15 +238,19 @@ function typeTextKeyboard() {
         }
         break;
       }
-      case 'AltRight':
+      case 'AltRight': {
+        const shiftKey = document.querySelector('[data-code="ShiftRight"]');
+        if (shiftKey.classList.contains('keyboard__btn_active')) {
+          changeLang();
+        }
         break;
+      }
       case 'none':
         break;
       default:
         monitor.textContent += pushedKey.textContent;
         break;
     }
-    markPhysicallyPushedKey();
   } else if (event.type === 'keyup') {
     switch (event.code) {
       case 'ShiftLeft':
