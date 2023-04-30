@@ -108,7 +108,7 @@ h6 {
   outline: none;
 }
 .keyboard {
-  padding: 5px;
+  padding: 10px;
   border: 2px solid grey;
   border-radius: 6px;
   background-color: #e9cca4;
@@ -116,19 +116,39 @@ h6 {
 .keyboard__row {
   display: flex;
   gap: 6px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .keyboard__btn {
+  position: relative;
   width: 40px;
   height: 40px;
   font-weight: 500;
   line-height: 40px;
-  text-align: center;
   color: white;
-  background: #b45c21;
-  border-radius: 6px;
   cursor: pointer;
-  transition: font-size 0.1s, border-radius 0.1s, background-color 0.3s;
+  transition: font-size 0.1s, background-color 0.3s;
+  border-radius: 10px;
+  background: linear-gradient(180deg,#282828,#202020);
+  box-shadow: inset -8px 0 8px rgba(0,0,0,0.15),
+              inset 0 -8px 8px rgba(0,0,0,0.25), 
+              0 0 0 2px rgba(0,0,0,0.75), 
+              10px 20px 25px rgba(0,0,0,0.4);
+  overflow: hidden;
+}
+.keyboard__btn::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  top: 2px;
+  right: 7px;
+  left: 3px;
+  background: linear-gradient(90deg,rgba(35, 35, 35, 0.1), rgba(74, 74, 74, 0.4));
+  border-radius: 10px;
+  box-shadow: -10px -10px 10px rgba(255,255,255,0.25),
+              10px 5px 10px rgba(0,0,0,0.15);
+  border-left: 1px solid #0004;/*сплошная рамка*/
+  border-bottom: 1px solid #0004;
+  border-top: 1px solid #0009;
 }
 @media (hover: hover) {
   .keyboard__btn:hover {
@@ -137,7 +157,6 @@ h6 {
   .keyboard__btn_active:hover {
     background: #663413;
   }
-  
 }
 .keyboard__btn_wide {
   flex-grow: 1;
@@ -150,8 +169,8 @@ h6 {
 }
 .keyboard__btn_active {
   font-size: 20px;
-  background: #663413;
-  border-radius: 20px;
+  box-shadow: none;
+  background: linear-gradient(0deg,#282828,#202020);
 }
 .keyboard__made {
   font-size: 8px;

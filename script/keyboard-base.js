@@ -52,7 +52,7 @@ const keyBase = [
   {code: 'Comma', eng: ',', rus: 'ь', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char'},
   {code: 'Period', eng: '.', rus: 'б', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char'},
   {code: 'Slash', eng: '/', rus: 'ю', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char'},
-  {code: 'ArrowUp', eng: 'Up', rus: 'Up', uniLang: true, secondFunc: ''},
+  {code: 'ArrowUp', eng: '↑', rus: '↑', uniLang: true, secondFunc: ''},
   {code: 'ShiftRight', eng: 'Shift', rus: 'Shift', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'ControlLeft', eng: 'Ctrl', rus: 'Ctrl', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'MetaLeft', eng: 'Win', rus: 'Win', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
@@ -60,9 +60,9 @@ const keyBase = [
   {code: 'AltLeft', eng: 'Alt', rus: 'Alt', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
   {code: 'Space', eng: 'Space', rus: 'Space', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_widest'},
   {code: 'AltRight', eng: 'Alt', rus: 'Alt', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
-  {code: 'ArrowLeft', eng: 'Left', rus: 'Left', uniLang: true, secondFunc: ''},
-  {code: 'ArrowDown', eng: 'Down', rus: 'Down', uniLang: true, secondFunc: ''},
-  {code: 'ArrowRight', eng: 'Right', rus: 'Right', uniLang: true, secondFunc: ''},
+  {code: 'ArrowLeft', eng: '←', rus: '←', uniLang: true, secondFunc: ''},
+  {code: 'ArrowDown', eng: '↓', rus: '↓', uniLang: true, secondFunc: ''},
+  {code: 'ArrowRight', eng: '→', rus: '→', uniLang: true, secondFunc: ''},
   {code: 'ControlRight', eng: 'Ctrl', rus: 'Ctrl', uniLang: true, secondFunc: '', additionClass: 'keyboard__btn_wide'},
 ];
 
