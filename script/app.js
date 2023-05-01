@@ -1,6 +1,7 @@
 import keyBase from './keyboard-base.js';
 import {
-  createPageStructure, createKB, setLangOnStart, secondFuncOn, secondFuncOff,
+  createPageStructure, createKB, setLangOnStart,
+  secondFuncOn, secondFuncOff, typeText, doBackspace, doDelete,
 } from './create-kb.js';
 
 let isCapsLkOn = false;
@@ -29,11 +30,13 @@ function changeCharsCase() {
   const keys = document.querySelectorAll('.keyboard__btn_char');
   if (!isCapsLkOn) {
     keys.forEach((item) => {
-      item.textContent = item.textContent.toUpperCase();
+      const node1 = item;
+      node1.textContent = item.textContent.toUpperCase();
     });
   } else {
     keys.forEach((item) => {
-      item.textContent = item.textContent.toLowerCase();
+      const node2 = item;
+      node2.textContent = item.textContent.toLowerCase();
     });
   }
   isCapsLkOn = !(isCapsLkOn);
@@ -67,40 +70,35 @@ function deAnimateKey() {
 }
 
 function typeTextMouse() {
-  // const caretPos = monitor.selectionStart;
+  let caretPos = monitor.selectionStart;
+  const textAtStart = monitor.textContent;
   if (event.target.tagName === 'BUTTON') {
     if (event.type === 'mousedown') {
       animateKey();
       switch (event.target.dataset.code) {
         case 'Space':
-          monitor.textContent += ' ';
+          monitor.textContent = typeText(textAtStart, caretPos, ' ');
+          caretPos += 1;
           break;
         case 'CapsLock':
           changeCharsCase();
           break;
         case 'Tab':
-          monitor.textContent += '\t';
+          monitor.textContent = typeText(textAtStart, caretPos, '\t');
+          caretPos += 1;
           break;
         case 'Enter':
-          monitor.textContent += '\n';
+          monitor.textContent = typeText(textAtStart, caretPos, '\n');
+          caretPos += 1;
           break;
         case 'Backspace': {
-          // const textBeforeCaret = monitor.textContent.slice(0, caretPos - 1);
-          // const textAfterCaret = monitor.textContent.slice(caretPos);
-          // caretPos = monitor.selectionStart;
-          // monitor.textContent = textBeforeCaret + textAfterCaret;
-          // return;
-
-          // const fakeEvent = new KeyboardEvent('keydown', {
-          //   bubbles: true,
-          //   code: 'Backspace',
-          // });
-          // console.dir(fakeEvent);
-          // document.dispatchEvent(fakeEvent);
+          [monitor.textContent, caretPos] = doBackspace(textAtStart, caretPos);
           break;
         }
-        case 'Delete':
+        case 'Delete': {
+          [monitor.textContent, caretPos] = doDelete(textAtStart, caretPos);
           break;
+        }
         case 'ShiftLeft':
           changeCharsCase();
           secondFuncOn(keyBase);
@@ -123,16 +121,14 @@ function typeTextMouse() {
           changeLang();
           break;
         default:
-          monitor.textContent += event.target.textContent;
+          monitor.textContent = typeText(textAtStart, caretPos, event.target.textContent);
+          caretPos += 1;
           break;
       }
     } else if (event.type === 'mouseup') {
       deAnimateKey();
       switch (event.target.dataset.code) {
         case 'Backspace':
-          // monitor.selectionStart = caretPos;
-          // monitor.focus();
-          // return;
           break;
         case 'ShiftLeft':
           changeCharsCase();
@@ -142,28 +138,16 @@ function typeTextMouse() {
           changeCharsCase();
           secondFuncOff(keyBase, lang);
           break;
-        case 'ArrowLeft': {
-          // monitor.selectionStart = caretPos - 1;
-          // monitor.focus();
-          // return;
-          // const endOfText = monitor.textContent.length;
-          // monitor.setSelectionRange(endOfText - 1, endOfText - 1);
-          // monitor.focus();
-          break;
-        }
         default:
           break;
       }
     }
   }
-  const endOfText = monitor.textContent.length;
-  monitor.setSelectionRange(endOfText, endOfText);
-  // monitor.selectionStart = caretPos + 1;
   monitor.focus();
+  monitor.setSelectionRange(caretPos, caretPos);
 }
 
 function markPhysicallyPushedKey() {
-  event.preventDefault();
   const physicallyPushedKey = document.querySelector(`[data-code=${event.code}]`);
   switch (event.code) {
     case 'CapsLock':
@@ -187,25 +171,33 @@ function unmarkPhysicallyPushedKey() {
 }
 
 function typeTextKeyboard() {
+  let caretPos = monitor.selectionStart;
+  const textAtStart = monitor.textContent;
   const pushedKey = keyboard.querySelector(`[data-code=${event.code}]`);
   if (event.type === 'keydown') {
+    event.preventDefault();
     markPhysicallyPushedKey();
     switch (event.code) {
       case 'Space':
-        monitor.textContent += ' ';
+        monitor.textContent = typeText(textAtStart, caretPos, ' ');
+        caretPos += 1;
         break;
       case 'CapsLock':
         changeCharsCase();
         break;
       case 'Tab':
-        monitor.textContent += '\t';
+        monitor.textContent = typeText(textAtStart, caretPos, '\t');
+        caretPos += 1;
         break;
       case 'Enter':
-        monitor.textContent += '\n';
+        monitor.textContent = typeText(textAtStart, caretPos, '\n');
+        caretPos += 1;
         break;
       case 'Backspace':
+        [monitor.textContent, caretPos] = doBackspace(textAtStart, caretPos);
         break;
       case 'Delete':
+        [monitor.textContent, caretPos] = doDelete(textAtStart, caretPos);
         break;
       case 'ShiftLeft': {
         changeCharsCase();
@@ -248,7 +240,8 @@ function typeTextKeyboard() {
       case 'none':
         break;
       default:
-        monitor.textContent += pushedKey.textContent;
+        monitor.textContent = typeText(textAtStart, caretPos, pushedKey.textContent);
+        caretPos += 1;
         break;
     }
   } else if (event.type === 'keyup') {
@@ -266,9 +259,8 @@ function typeTextKeyboard() {
     }
     unmarkPhysicallyPushedKey();
   }
-  const endOfText = monitor.textContent.length;
-  monitor.setSelectionRange(endOfText, endOfText);
   monitor.focus();
+  monitor.setSelectionRange(caretPos, caretPos);
 }
 
 keyboard.addEventListener('mousedown', typeTextMouse);

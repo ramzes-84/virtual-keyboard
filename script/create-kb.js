@@ -107,3 +107,49 @@ export function createKB(arr, language) {
   manufacturer.className = 'keyboard__made';
   kbContainer.append(manufacturer);
 }
+
+export function typeText(str, caret, char) {
+  let result;
+  if (caret === str.length) {
+    result = str + char;
+  } else if (caret === 0) {
+    result = char + str;
+  } else {
+    const partBeforeCaret = str.slice(0, caret);
+    const partAfterCaret = str.slice(caret, str.length);
+    result = partBeforeCaret + char + partAfterCaret;
+  }
+  return result;
+}
+
+export function doBackspace(str, caret) {
+  let result;
+  let newCaret;
+  if (caret === str.length) {
+    result = str.slice(0, str.length - 1);
+    newCaret = caret - 1;
+  } else if (caret === 0) {
+    result = str;
+    newCaret = caret;
+  } else {
+    const partBeforeCaret = str.slice(0, caret - 1);
+    const partAfterCaret = str.slice(caret, str.length);
+    result = partBeforeCaret + partAfterCaret;
+    newCaret = caret - 1;
+  }
+  return [result, newCaret];
+}
+
+export function doDelete(str, caret) {
+  let result;
+  if (caret === str.length) {
+    result = str;
+  } else if (caret === 0) {
+    result = str.slice(1, str.length);
+  } else {
+    const partBeforeCaret = str.slice(0, caret);
+    const partAfterCaret = str.slice(caret + 1, str.length);
+    result = partBeforeCaret + partAfterCaret;
+  }
+  return [result, caret];
+}

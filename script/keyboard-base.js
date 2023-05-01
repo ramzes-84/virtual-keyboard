@@ -150,13 +150,13 @@ const keyBase = [
     code: 'KeyM', eng: 'm', rus: 'ь', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
   },
   {
-    code: 'Comma', eng: ',', rus: 'ь', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
+    code: 'Comma', eng: ',', rus: 'б', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
   },
   {
-    code: 'Period', eng: '.', rus: 'б', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
+    code: 'Period', eng: '.', rus: 'ю', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
   },
   {
-    code: 'Slash', eng: '/', rus: 'ю', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
+    code: 'Slash', eng: '/', rus: '.', uniLang: false, secondFunc: '', additionClass: 'keyboard__btn_char',
   },
   {
     code: 'ArrowUp', eng: '↑', rus: '↑', uniLang: true, secondFunc: '',
