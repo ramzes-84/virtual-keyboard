@@ -8,6 +8,7 @@ module.exports = {
     {
       files: ['*.js'],
       rules: {
+        'no-restricted-globals': ['off', 'event'],
         'import/extensions': [
           'error',
           'always',
