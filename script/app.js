@@ -24,7 +24,6 @@ function changeLang() {
   lang = newLang;
   keyboard.innerHTML = '';
   createKB(keyBase, lang);
-  isCapsLkOn = false;
 }
 
 function changeCharsCase() {
